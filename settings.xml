@@ -5,7 +5,7 @@
 
     <servers>
         <server>
-            <id>maven-test</id>
+            <id>github</id>
             <username>eespinozah</username>
             <password>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</password>
         </server>
