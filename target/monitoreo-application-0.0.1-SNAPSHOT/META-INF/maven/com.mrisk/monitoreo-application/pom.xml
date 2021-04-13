@@ -21,7 +21,7 @@
 			<artifactId>monitoreo-domain</artifactId>
 			<version>${monitoreo.domain.version}</version>
 		</dependency>
-		<dependency> 
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
