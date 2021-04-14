@@ -1,7 +1,7 @@
 name: Publish package to GitHub Packages
 on:
   push:
-    branches: main
+    branches: [ master ]
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -10,11 +10,22 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: 11
-      - name: Deploy to Github Package Registry
+          settings-path: ".m2/"
+      - uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
+      - name: Publish package
+        run:  mvn $MAVEN_CLI_OPTS clean deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
+      - name: Copying target jar
         run: |
-            mkdir -p ~/.m2
-            echo "<settings><servers><server><id>gh</id><username>eespinozah</username><password>\${env.GITHUB_TOKEN}</password></server></servers></settings>" > ~/.m2/settings.xml
-            REPO="gh::default::https://maven.pkg.github.com/${GITHUB_REPOSITORY}"
-            mvn deploy -DaltReleaseDeploymentRepository="${REPO}" -DaltSnapshotDeploymentRepository="${REPO}"
+          mkdir myTarget
+          cp target/*.jar myTarget
+      - name: Uploading jar
+        uses: actions/upload-artifact@v2
+        with:
+          name: myPackage
+          path: myTarget
