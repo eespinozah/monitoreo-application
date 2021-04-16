@@ -6,8 +6,8 @@ import com.mrisk.monitoreo.rule.domain.Component;
 
 public interface ComponentRepository {
 
-    Component findById(Integer id);
+    Component findById( Integer tenaId, Integer id);
 
-    List<Component> findComponents();
+    List<Component> findComponents( Integer tenaId);
 
 }

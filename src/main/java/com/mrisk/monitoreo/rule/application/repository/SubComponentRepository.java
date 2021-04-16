@@ -6,10 +6,8 @@ import com.mrisk.monitoreo.rule.domain.SubComponent;
 
 public interface SubComponentRepository {
 
-    SubComponent findById(Integer id);
+    List<SubComponent> findAllSubComponentByComponentId(Integer tenaId, Integer compId);
 
-    List<SubComponent> findAllSubComponentByComponentId(Integer compId);
-
-    SubComponent findSubCompByCompIdAndSubId(Integer id, Integer csubid);
+    SubComponent findSubCompByCompIdAndSubId( Integer tenaId,Integer id, Integer csubid );
 
 }

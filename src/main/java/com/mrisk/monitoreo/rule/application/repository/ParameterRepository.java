@@ -6,8 +6,8 @@ import com.mrisk.monitoreo.rule.domain.Parameter;
 
 public interface ParameterRepository  {
 
-	Parameter singleSelectParameter(Integer id);
+	Parameter singleSelectParameter(Integer tenaId,Integer id);
 
-    List<Parameter> findParametersByRequestsFilter(Integer compId, Integer csubId, String parameterName);
+    List<Parameter> findParametersByRequestsFilter(Integer tenaId,  Integer compId, Integer csubId, String parameterName);
 
 }
