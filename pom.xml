@@ -46,8 +46,8 @@
 			<url>https://maven.pkg.github.com/eespinozah/monitoreo-application</url>
 		</repository>
 	</distributionManagement>
-	<repositories>
-		
+	
+	<repositories>	
 		<repository>
 			<id>github</id>
 			<url>https://maven.pkg.github.com/eespinozah/monitoreo-domain</url>
@@ -56,4 +56,5 @@
 			</snapshots>
 		</repository>
 	</repositories>
+	
 </project>
